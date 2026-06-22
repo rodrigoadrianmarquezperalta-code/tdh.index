@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDAH | Comprender, Apoyar y Actuar</title>
+    <style>
+        :root {
+            --deep-blue: #1a3a5c;
+            --calm-teal: #2a9d8f;
+            --warm-coral: #e76f51;
+            --soft-yellow: #f4a261;
+            --light-lavender: #e9e4f0;
+            --creamy-white: #fefdfb;
+            --dark-text: #2c3e50;
+            --soft-gray: #f8f9fa;
+            --card-white: #ffffff;
+            --attention-orange: #f77f00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Tahoma, Geneva, sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: var(--creamy-white);
+            font-size: 1.05rem;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Banner superior */
+        .top-banner {
+            background: linear-gradient(90deg, #2a9d8f, #1a3a5c);
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        .top-banner a {
+            color: #f4a261;
+            font-weight: bold;
+        }
+
+        /* Hero con formas geométricas */
+        .hero-section {
+            background: linear-gradient(160deg, #e9e4f0 0%, #f0e6ef 30%, #fce4d6 100%);
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 70px 0 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a3a5c;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .hero-text h1 span {
+            color: #e76f51;
+            display: block;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        .hero-text p {
+            font-size: 1.15rem;
+            color: #444;
+            margin-bottom: 28px;
+            max-width: 500px;
+        }
+
+        .hero-svg {
+            flex: 1 1 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            margin: 4px;
+            letter-spacing: 0.4px;
+        }
+        .btn-primary {
+            background-color: #2a9d8f;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #218277;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(42,157,143,0.3);
+        }
+        .btn-coral {
+            background-color: #e76f51;
+            color: white;
+        }
+        .btn-coral:hover {
+            background-color: #c85a3f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(231,111,81,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1a3a5c;
+            color: #1a3a5c;
+        }
+        .btn-outline:hover {
+            background: #1a3a5c;
+            color: white;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: var(--card-white);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 14px 25px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #1a3a5c;
+            font-weight: 600;
+            padding: 9px 17px;
+            border-radius: 25px;
+            transition: 0.3s;
+            font-size: 0.92rem;
+        }
+        nav a:hover {
+            background-color: #e9e4f0;
+            color: #1a3a5c;
+        }
+
+        /* Secciones */
+        section {
+            padding: 65px 0;
+        }
+        .bg-white {
+            background-color: var(--card-white);
+        }
+        .bg-lavender {
+            background-color: #faf8fc;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 14px;
+            color: #1a3a5c;
+            font-weight: 700;
+        }
+        .section-intro {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 40px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        /* Tarjetas */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+            border: 1px solid #f0e6ef;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            color: #1a3a5c;
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #555;
+        }
+
+        /* Lista de síntomas */
+        .symptom-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .symptom-item {
+            background: white;
+            border-radius: 16px;
+            padding: 22px 20px;
+            flex: 1 1 200px;
+            max-width: 260px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-bottom: 4px solid #f4a261;
+            transition: 0.3s;
+        }
+        .symptom-item:hover {
+            border-bottom-color: #e76f51;
+        }
+        .symptom-emoji {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Estadísticas */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            justify-content: center;
+        }
+        .stat-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 18px;
+            text-align: center;
+            flex: 1 1 180px;
+            max-width: 220px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-top: 5px solid #2a9d8f;
+        }
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #1a3a5c;
+            display: block;
+        }
+
+        /* Recursos */
+        .resource-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px 22px;
+            text-align: center;
+            flex: 1 1 240px;
+            max-width: 300px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+            border-left: 5px solid #2a9d8f;
+            transition: 0.3s;
+        }
+        .resource-card:hover {
+            border-left-color: #e76f51;
+            transform: scale(1.02);
+        }
+        .resource-card h4 {
+            color: #1a3a5c;
+            margin: 10px 0;
+        }
+
+        /* Cita */
+        .quote-box {
+            background: linear-gradient(135deg, #1a3a5c, #2a4a6f);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 22px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 35px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a3a5c;
+            color: #ddd;
+            text-align: center;
+            padding: 40px 25px;
+        }
+        footer a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0 30px;
+            }
+            nav .container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner superior -->
+    <div class="top-banner">
+        🧠 El TDAH no es falta de voluntad, es una condición neurobiológica real · 
+        <a href="#recursos">Busca apoyo aquí</a>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>TDAH <span>Trastorno por Déficit de Atención e Hiperactividad</span></h1>
+                <p>Afecta a niños, adolescentes y adultos en todo el mundo. Con diagnóstico adecuado, tratamiento y apoyo, las personas con TDAH pueden desarrollar todo su potencial.</p>
+                <div>
+                    <a href="#sintomas" class="btn btn-primary">Síntomas</a>
+                    <a href="#recursos" class="btn btn-coral">Centros de Ayuda</a>
+                </div>
+            </div>
+            <div class="hero-svg">
+                <svg width="280" height="260" viewBox="0 0 280 260" fill="none">
+                    <!-- Cerebro simplificado -->
+                    <ellipse cx="140" cy="110" rx="90" ry="70" fill="#e9e4f0" stroke="#1a3a5c" stroke-width="3"/>
+                    <!-- Hemisferio izquierdo -->
+                    <path d="M95 110 Q95 50 140 50 Q185 50 185 110" fill="#d5c6e0" opacity="0.7"/>
+                    <!-- Hemisferio derecho -->
+                    <path d="M95 110 Q95 170 140 170 Q185 170 185 110" fill="#f0e6ef" opacity="0.7"/>
+                    <!-- Neuronas/estrellas -->
+                    <circle cx="115" cy="85" r="8" fill="#f4a261"/>
+                    <circle cx="165" cy="95" r="8" fill="#e76f51"/>
+                    <circle cx="140" cy="130" r="8" fill="#2a9d8f"/>
+                    <circle cx="100" cy="120" r="6" fill="#f4a261" opacity="0.6"/>
+                    <circle cx="175" cy="75" r="6" fill="#e76f51" opacity="0.6"/>
+                    <!-- Líneas de conexión -->
+                    <line x1="115" y1="85" x2="165" y2="95" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
+                    <line x1="115" y1="85" x2="140" y2="130" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
+                    <line x1="165" y1="95" x2="140" y2="130" stroke="#1a3a5c" stroke-width="1.5" opacity="0.5"/>
+                    <!-- Texto -->
+                    <text x="140" y="210" text-anchor="middle" fill="#1a3a5c" font-size="14" font-weight="bold">Cerebro TDAH</text>
+                    <text x="140" y="230" text-anchor="middle" fill="#666" font-size="11">Funciona diferente, no peor</text>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <div class="container">
+            <a href="#que-es">¿Qué es?</a>
+            <a href="#sintomas">Síntomas</a>
+            <a href="#causas">Causas</a>
+            <a href="#datos">Datos</a>
+            <a href="#tratamiento">Tratamiento</a>
+            <a href="#recursos">Ayuda</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ¿Qué es el TDAH? -->
+        <section id="que-es" class="bg-white">
+            <div class="container">
+                <h2>¿Qué es el TDAH?</h2>
+                <p class="section-intro">El Trastorno por Déficit de Atención e Hiperactividad (TDAH) es una condición del neurodesarrollo que afecta la capacidad de atención, el control de impulsos y el nivel de actividad. No es una "mala conducta" ni "falta de disciplina".</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">🧬</div>
+                        <h3>Base Neurobiológica</h3>
+                        <p>El TDAH tiene un fuerte componente genético y está relacionado con diferencias en la química y estructura cerebral, especialmente en áreas que regulan la atención y el autocontrol.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👶</div>
+                        <h3>Aparece en la Infancia</h3>
+                        <p>Los síntomas suelen manifestarse antes de los 12 años, aunque muchas personas no son diagnosticadas hasta la edad adulta. Acompaña a la persona durante toda la vida.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💪</div>
+                        <h3>No Define a la Persona</h3>
+                        <p>Con el apoyo adecuado, las personas con TDAH pueden destacar en creatividad, energía, empatía y capacidad de pensamiento divergente. Muchos emprendedores y artistas tienen TDAH.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Síntomas -->
+        <section id="sintomas" class="bg-lavender">
+            <div class="container">
+                <h2>Síntomas Principales</h2>
+                <p class="section-intro">El TDAH se manifiesta de forma diferente en cada persona. Se reconocen tres áreas principales de síntomas:</p>
+                <div class="symptom-list">
+                    <div class="symptom-item">
+                        <span class="symptom-emoji">🔍</span>
+                        <h3>Inatención</h3>
+                        <p>Dificultad para mantener el foco, se distrae con facilidad, olvida tareas, pierde objetos, parece no escuchar.</p>
+                    </div>
+                    <div class="symptom-item">
+                        <span class="symptom-emoji">⚡</span>
+                        <h3>Hiperactividad</h3>
+                        <p>Inquietud constante, dificultad para estar quieto, habla excesiva, sensación interna de agitación o "motor encendido".</p>
+                    </div>
+                    <div class="symptom-item">
+                        <span class="symptom-emoji">🚦</span>
+                        <h3>Impulsividad</h3>
+                        <p>Actuar sin pensar, interrumpir conversaciones, dificultad para esperar turnos, tomar decisiones apresuradas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Causas -->
+        <section id="causas" class="bg-white">
+            <div class="container">
+                <h2>¿Qué Causa el TDAH?</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">🧬</div>
+                        <h3>Genética</h3>
+                        <p>El TDAH es altamente hereditario. Si un padre tiene TDAH, la probabilidad de que su hijo también lo tenga es significativamente mayor.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🧠</div>
+                        <h3>Diferencias Cerebrales</h3>
+                        <p>Estudios de neuroimagen muestran diferencias en el tamaño y actividad de regiones cerebrales como la corteza prefrontal, encargada de las funciones ejecutivas.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🤰</div>
+                        <h3>Factores Prenatales</h3>
+                        <p>Exposición a toxinas durante el embarazo (alcohol, tabaco), bajo peso al nacer o complicaciones en el parto pueden aumentar el riesgo.</p>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    "El TDAH no es un trastorno de 'no saber qué hacer', es un trastorno de 'no hacer lo que sabes'." — Dr. Russell Barkley
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos y estadísticas -->
+        <section id="datos" class="bg-lavender">
+            <div class="container">
+                <h2>El TDAH en Cifras</h2>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <span class="stat-number">5-7%</span>
+                        <span class="stat-label">de la población infantil mundial tiene TDAH</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2.5%</span>
+                        <span class="stat-label">de los adultos viven con TDAH a nivel global</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3:1</span>
+                        <span class="stat-label">proporción de diagnóstico niños vs niñas (infradiagnóstico femenino)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-label">de los casos responden positivamente al tratamiento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tratamiento -->
+        <section id="tratamiento" class="bg-white">
+            <div class="container">
+                <h2>Tratamiento y Manejo</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">💊</div>
+                        <h3>Medicación</h3>
+                        <p>Fármacos estimulantes y no estimulantes que ayudan a regular los neurotransmisores. Siempre deben ser recetados y supervisados por un médico especialista.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🗣️</div>
+                        <h3>Terapia Psicológica</h3>
+                        <p>La terapia cognitivo-conductual (TCC) ayuda a desarrollar estrategias de organización, manejo del tiempo y control emocional.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🏫</div>
+                        <h3>Apoyo Educativo</h3>
+                        <p>Adaptaciones escolares como más tiempo para exámenes, ubicación preferente en el aula y metodologías personalizadas marcan una gran diferencia.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👨‍👩‍👧</div>
+                        <h3>Psicoeducación Familiar</h3>
+                        <p>Informar a la familia sobre el TDAH reduce el estigma, mejora la comunicación y crea un entorno de apoyo en el hogar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos de ayuda -->
+        <section id="recursos" class="bg-lavender">
+            <div class="container">
+                <h2>Organizaciones y Recursos de Apoyo</h2>
+                <p class="section-intro">Si tú o un ser querido tiene TDAH, estas organizaciones ofrecen información, diagnóstico, tratamiento y grupos de apoyo.</p>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">🏥</span>
+                        <h4>CHADD (Children and Adults with ADHD)</h4>
+                        <p>Organización líder en EE.UU. con recursos educativos y grupos de apoyo.</p>
+                        <a href="https://chadd.org/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Visitar CHADD</a>
+                    </div>
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">🌎</span>
+                        <h4>ADHD Europe</h4>
+                        <p>Red de organizaciones europeas dedicadas al TDAH. Información en varios idiomas.</p>
+                        <a href="https://www.adhdeurope.eu/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">ADHD Europe</a>
+                    </div>
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">🇲🇽</span>
+                        <h4>ProyectoDAH (México)</h4>
+                        <p>Asociación mexicana que ofrece diagnóstico, terapias y talleres para familias.</p>
+                        <a href="https://www.proyectodah.org.mx/" target="_blank" rel="noopener" class="btn btn-coral" style="margin-top:8px;">ProyectoDAH</a>
+                    </div>
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">📞</span>
+                        <h4>Línea de Atención Psicológica</h4>
+                        <p>En México: Línea de la Vida 800 911 2000. Atención 24/7 para crisis emocionales.</p>
+                        <a href="tel:8009112000" class="btn btn-coral" style="margin-top:8px;">Llamar Ahora</a>
+                    </div>
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">📚</span>
+                        <h4>Fundación CADAH (España)</h4>
+                        <p>Información, formación y recursos sobre TDAH en español para toda la comunidad hispanohablante.</p>
+                        <a href="https://www.fundacioncadah.org/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Fundación CADAH</a>
+                    </div>
+                    <div class="resource-card">
+                        <span style="font-size: 2.5rem;">🧑‍⚕️</span>
+                        <h4>Directorio de Especialistas</h4>
+                        <p>Encuentra psiquiatras y psicólogos especializados en TDAH cerca de ti.</p>
+                        <a href="https://www.psychologytoday.com/us/therapists/adhd" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">Buscar Especialista</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.2rem;">🧠 El TDAH es una forma diferente de procesar el mundo. Con comprensión y apoyo, cada persona puede brillar.</p>
+            <p style="margin-top: 18px; font-size: 0.9rem; opacity: 0.8;">Página informativa sin fines de lucro. Contenido basado en fuentes de la OMS, APA y asociaciones internacionales de TDAH.</p>
+            <p style="margin-top: 12px;">
+                <a href="https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders">OMS Salud Mental</a> · 
+                <a href="https://www.psychiatry.org/patients-families/adhd">APA - TDAH</a> · 
+                <a href="https://www.nimh.nih.gov/health/publications/espanol/trastorno-de-deficit-de-atencion-e-hiperactividad">NIMH en Español</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+```
